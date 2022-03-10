@@ -1,7 +1,8 @@
 const Engineer = require("../lib/Engineer");
-
 describe("Engineer", () => {
-  Test("should create an object with 'github' string");
+  test("should create an object with 'github' string", () => {
+    const engineer = new Engineer("Alex", 23, "alex@alexmail.com", "amachkel");
 
-  const engineer = new Engineer();
+    expect(engineer.github).toEqual("amachkel");
+  });
 });
