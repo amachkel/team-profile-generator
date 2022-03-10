@@ -33,14 +33,6 @@ const questions = [
 function init() {
   inquirer.prompt(questions).then((data) => {
     getEmployee(data);
-    console.log(data.title);
-    data.title == "Manager"
-      ? getOfficeNum(data)
-      : data.title == "Engineer"
-      ? getGitHub(data)
-      : data.title == "Intern"
-      ? getSchool(data)
-      : console.error("error");
   });
   //based on job title, start new inquirer function
 }
@@ -56,6 +48,9 @@ getOfficeNum = (data) => {
     .then((response) => {
       data.officeNumber = response.officeNumber;
       console.log(data);
+      console.log(
+        `A new employee has been added: Title: ${data.title}, name: ${data.name}, id: ${data.id}, email: ${data.email}, office number: ${data.officeNumber}`
+      );
     });
 };
 getGitHub = (data) => {
@@ -69,7 +64,9 @@ getGitHub = (data) => {
     ])
     .then((response) => {
       data.github = response.github;
-      console.log(data);
+      console.log(
+        `A new employee has been added: Title: ${data.title}, name: ${data.name}, id: ${data.id}, email: ${data.email}, office number: ${data.officeNumber}`
+      );
     });
 };
 getSchool = (data) => {
@@ -83,13 +80,19 @@ getSchool = (data) => {
     ])
     .then((response) => {
       data.school = response.school;
-      console.log(data);
+      console.log(
+        `A new employee has been added: Title: ${data.title}, name: ${data.name}, id: ${data.id}, email: ${data.email}, office number: ${data.officeNumber}`
+      );
     });
 };
 const getEmployee = (data) => {
-  const employee1 = new Employee(data.name, data.id, data.email, data.title);
-  console.log(
-    `A new employee has been added: ${employee1.name}, ${employee1.id}, ${employee1.email}, ${employee1.title}`
-  );
+  console.log(data.title);
+  data.title == "Manager"
+    ? getOfficeNum(data)
+    : data.title == "Engineer"
+    ? getGitHub(data)
+    : data.title == "Intern"
+    ? getSchool(data)
+    : console.error("error");
 };
 init();
