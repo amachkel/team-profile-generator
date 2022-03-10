@@ -31,45 +31,65 @@ const questions = [
 ];
 
 function init() {
-    inquirer.prompt(questions).then((data) => {
-      console.log(data.title);
-      data.title == "Manager"
-        ? getOfficeNum(data)
-        : data.title == "Engineer"
-        ? getGitHub(data)
-        : data.title == "Intern"
-        ? getSchool(data)
-        : console.error("error");
+  inquirer.prompt(questions).then((data) => {
+    getEmployee(data);
+    console.log(data.title);
+    data.title == "Manager"
+      ? getOfficeNum(data)
+      : data.title == "Engineer"
+      ? getGitHub(data)
+      : data.title == "Intern"
+      ? getSchool(data)
+      : console.error("error");
+  });
+  //based on job title, start new inquirer function
+}
+getOfficeNum = (data) => {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "officeNumber",
+        message: "Manager's office number: ",
+      },
+    ])
+    .then((response) => {
+      data.officeNumber = response.officeNumber;
+      console.log(data);
     });
-    //then process and check employee type
-    //validate, based on validation, start new inquirer function
-  }
-  getOfficeNum = (data) => {
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "officeNumber",
-          message: "Manager's office number: ",
-        },
-      ])
-      .then((response) => {
-        data.officeNumber = response.officeNumber;
-        console.log(data);
-      });
-  };
-  getGitHub = (data) => {
-    inquirer
-      .prompt([
-        {
-          type: "input",
-          name: "github",
-          message: "GitHub username: ",
-        },
-      ])
-      .then((response) => {
-        data.github = response.github;
-        console.log(data);
-      });
-  };
+};
+getGitHub = (data) => {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "github",
+        message: "GitHub username: ",
+      },
+    ])
+    .then((response) => {
+      data.github = response.github;
+      console.log(data);
+    });
+};
+getSchool = (data) => {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        name: "school",
+        message: "School name: ",
+      },
+    ])
+    .then((response) => {
+      data.school = response.school;
+      console.log(data);
+    });
+};
+const getEmployee = (data) => {
+  const employee1 = new Employee(data.name, data.id, data.email, data.title);
+  console.log(
+    `A new employee has been added: ${employee1.name}, ${employee1.id}, ${employee1.email}, ${employee1.title}`
+  );
+};
 init();
