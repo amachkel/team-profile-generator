@@ -54,6 +54,7 @@ getOfficeNum = (data) => {
         data.title,
         data.officeNumber
       );
+      employee.validateManager();
       employeeArr.push(employee);
       console.log(data);
       addAnother();
@@ -80,6 +81,7 @@ getGitHub = (data) => {
         data.title,
         data.github
       );
+      employee.validateEngineer();
       employeeArr.push(employee);
       addAnother();
       console.log(`A new employee has been added: ${employeeArr}`);
@@ -103,6 +105,7 @@ getSchool = (data) => {
         data.title,
         data.school
       );
+      employee.validateIntern();
       employeeArr.push(employee);
       addAnother();
       console.log(
@@ -120,19 +123,21 @@ const getEmployee = (data) => {
     : console.error("error");
 };
 const addAnother = () => {
-  inquirer.prompt([
-    {
-      type: "checkbox",
-      name: "addAnother",
-      message: "What do you want to do now?",
-      choices: ["Add another employee", "I am done"],
-    },
-  ]).then((data) => {
-    if(data.addAnother != "I am done") {
-      init();
-    } else {
-      console.log(employeeArr);
-    }
-  });
+  inquirer
+    .prompt([
+      {
+        type: "checkbox",
+        name: "addAnother",
+        message: "What do you want to do now?",
+        choices: ["Add another employee", "I am done"],
+      },
+    ])
+    .then((data) => {
+      if (data.addAnother != "I am done") {
+        init();
+      } else {
+        console.log(employeeArr);
+      }
+    });
 };
 init();

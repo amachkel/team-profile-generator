@@ -1,7 +1,7 @@
 const Manager = require("../lib/Manager");
 
 describe("Manager", () => {
-  test("should create an object with 'github' string", () => {
+  test("should create an object with 'officeNumber' string", () => {
     const manager = new Manager("Sissy", 23, "sissy@mail.com", 112);
 
     expect(manager.officeNumber).toEqual(112);
