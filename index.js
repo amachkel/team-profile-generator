@@ -4,7 +4,7 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-
+const generateTeam = require("./cards");
 const questions = [
   {
     type: "checkbox",
@@ -18,7 +18,7 @@ const questions = [
     message: "Enter employee's name.",
   },
   {
-    type: "input",
+    type: "number",
     name: "id",
     message: "Enter employee's ID",
   },
@@ -40,27 +40,25 @@ getOfficeNum = (data) => {
   inquirer
     .prompt([
       {
-        type: "input",
+        type: "number",
         name: "officeNumber",
         message: "Manager's office number: ",
       },
     ])
     .then((response) => {
-      data.officeNumber = response.officeNumber;
       const employee = new Manager(
         data.name,
         data.id,
         data.email,
-        data.title,
-        data.officeNumber
+        response.officeNumber
       );
       employee.validateManager();
+      console.log(
+        `A new employee has been added: Title: ${employee.title}, name: ${employee.name}, id: ${employee.id}, email: ${employee.email}, office number: ${employee.officeNumber}`
+      );
       employeeArr.push(employee);
       console.log(data);
       addAnother();
-      console.log(
-        `A new employee has been added: Title: ${data.title}, name: ${data.name}, id: ${data.id}, email: ${data.email}, office number: ${data.officeNumber}`
-      );
     });
 };
 getGitHub = (data) => {
@@ -78,7 +76,6 @@ getGitHub = (data) => {
         data.name,
         data.id,
         data.email,
-        data.title,
         data.github
       );
       employee.validateEngineer();
@@ -102,7 +99,6 @@ getSchool = (data) => {
         data.name,
         data.id,
         data.email,
-        data.title,
         data.school
       );
       employee.validateIntern();
@@ -137,11 +133,12 @@ const addAnother = () => {
         init();
       } else {
         console.log(employeeArr);
-        const buffer = fs.readFileSync("./src/template.html", (err) => {
-          err ? console.log(err) : console.log("buffer successful");
-        });
-        const fileContents = buffer.toString();
-        console.log(fileContents);
+        generateTeam(employeeArr);
+        // const buffer = fs.readFileSync("./src/template.html", (err) => {
+        //   err ? console.log(err) : console.log("buffer successful");
+        // });
+        // const fileContents = buffer.toString();
+        // console.log(fileContents);
         // let newFile = fileContents.replace(`${title}`, data.title);
       }
     });
