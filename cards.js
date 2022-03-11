@@ -1,4 +1,5 @@
 renderCard = (data) => {
+    console.log(data);
   const createCard = $("<div>");
   const main = $("#main");
   createCard.addClass("card");
@@ -44,11 +45,34 @@ renderCardBody = (data, createCard) => {
 };
 
 function generateTeam(data) {
-    console.log(data.length);
+  console.log(data.length);
   data.forEach((obj) => {
-      console.log(obj);
+    console.log(obj);
     renderCard(obj);
   });
-};
-
+}
+// let data = [
+//   {
+//     name: "Cory",
+//     id: 234,
+//     email: "cory.harkins@gmail.com",
+//     title: "Manager",
+//     officeNumber: 1211,
+//   },
+//   {
+//     name: "Alex",
+//     id: 456,
+//     email: "amachkel@gmail.com",
+//     title: "Engineer",
+//     github: "amachkel",
+//   },
+//   {
+//     name: "Seamus",
+//     id: 345,
+//     email: "seabutter@gmail.com",
+//     title: "Intern",
+//     school: "gatech",
+//   },
+// ];
 module.exports = generateTeam;
+
