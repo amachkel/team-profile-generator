@@ -137,6 +137,12 @@ const addAnother = () => {
         init();
       } else {
         console.log(employeeArr);
+        const buffer = fs.readFileSync("./src/template.html", (err) => {
+          err ? console.log(err) : console.log("buffer successful");
+        });
+        const fileContents = buffer.toString();
+        console.log(fileContents);
+        // let newFile = fileContents.replace(`${title}`, data.title);
       }
     });
 };

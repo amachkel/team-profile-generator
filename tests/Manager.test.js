@@ -1,11 +1,14 @@
 const Manager = require("../lib/Manager");
 
 describe("Manager", () => {
+  // Positive test
   test("should create an object with 'officeNumber' string", () => {
+    // Act
     const manager = new Manager("Sissy", 23, "sissy@mail.com", 112);
-
-    expect(manager.officeNumber).toEqual(112);
+    // Assert
+    expect(manager.getOfficeNumber()).toEqual(112);
   });
+  // Exception Test
   test("should throw an error if officeNumber is not a number", () => {
     // Act
     const err = new Error(
@@ -13,9 +16,10 @@ describe("Manager", () => {
     );
     // Assert
     expect(() => {
-      new Manager("Sissy", 23, "sissy@mail.com", "112").getOfficeNumber();
+      new Manager("Sissy", 23, "sissy@mail.com", "112").validateManager();
     }).toThrow(err);
   });
+  // Exception Test
   test("should throw an error if officeNumber is less than zero", () => {
     // Act
     const err = new Error(
@@ -23,12 +27,13 @@ describe("Manager", () => {
     );
     // Assert
     expect(() => {
-      new Manager("Sissy", 23, "sissy@mail.com", -4).getOfficeNumber();
+      new Manager("Sissy", 23, "sissy@mail.com", -4).validateManager();
     }).toThrow(err);
   });
-  test("should override title to equal 'manager'", () => {
-    const manager = new Manager("manager");
+  // Positive test
+  test("should override title to equal 'Manager'", () => {
+    const manager = new Manager("Sissy", 23, "sissy@mail.com", 112);
 
-    expect(manager.title).toEqual("manager");
+    expect(manager.getTitle()).toEqual("Manager");
   });
-}); 
+});
