@@ -4,7 +4,7 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-const generateTeam = require("./cards");
+// const generateTeam = require("./cards");
 const questions = [
   {
     type: "checkbox",
@@ -81,7 +81,6 @@ getGitHub = (data) => {
       employee.validateEngineer();
       employeeArr.push(employee);
       addAnother();
-      console.log(`A new employee has been added: ${employeeArr}`);
     });
 };
 getSchool = (data) => {
@@ -95,18 +94,13 @@ getSchool = (data) => {
     ])
     .then((response) => {
       data.school = response.school;
-      const employee = new Intern(
-        data.name,
-        data.id,
-        data.email,
-        data.school
-      );
+      const employee = new Intern(data.name, data.id, data.email, data.school);
       employee.validateIntern();
-      employeeArr.push(employee);
-      addAnother();
       console.log(
         `A new employee has been added: Title: ${data.title}, name: ${data.name}, id: ${data.id}, email: ${data.email}, school: ${data.school}`
       );
+      employeeArr.push(employee);
+      addAnother();
     });
 };
 const getEmployee = (data) => {
@@ -132,14 +126,19 @@ const addAnother = () => {
       if (data.addAnother != "I am done") {
         init();
       } else {
-        console.log(employeeArr);
-        generateTeam(employeeArr);
-        // const buffer = fs.readFileSync("./src/template.html", (err) => {
-        //   err ? console.log(err) : console.log("buffer successful");
-        // });
-        // const fileContents = buffer.toString();
-        // console.log(fileContents);
-        // let newFile = fileContents.replace(`${title}`, data.title);
+        fs.readFile("cards.js", "utf8", function (err, data) {
+          if (err) {
+            console.log(err);
+          }
+          var result = data.replace(
+            "{employeeData}",
+            JSON.stringify(employeeArr)
+          );
+
+          fs.writeFile("cards-prod.js", result, "utf8", function (err) {
+            if (err) console.log(err);
+          });
+        });
       }
     });
 };
