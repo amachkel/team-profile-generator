@@ -9,7 +9,7 @@ Here, I've created an application designed to allow managers to generate a webpa
  - [technologies used](#technologies-used)
  - [contributors](#contributors)
  - [license](#license)
- - [test](#test)
+ - [tests](#tests)
 
 ## Installation Requirements
 [![8.3.1](https://img.shields.io/badge/npm%20version-8.3.1-blue)](https://img.shields.io/endpoint?url=https://www.npmjs.com/package/npm/v/8.3.1)
@@ -28,7 +28,9 @@ https://user-images.githubusercontent.com/84882398/158076093-d8f4ff62-7093-47d4-
 ## Technologies Used
 
 Front End:
-* Languages: HTML5/CSS/JS
+* HTML
+* CSS
+* JavaScript
 * jQuery
 * Bootstrap
 
