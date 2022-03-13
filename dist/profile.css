@@ -1,0 +1,39 @@
+:root {
+    --black: #001219;
+    --blue: #005f73;
+    --blu-grn: #94d2bd;
+    --medium: #e9d8a6;
+    --orange: #ca6702;
+    --rust: #bb3e03;
+  }
+  
+  body {
+      background-color: var(--medium);
+  }
+  header {
+    padding: 1rem;
+    margin: 3rem 2rem 3rem 2rem;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--black);
+    background-color: var(--blu-grn);
+    border: 10px inset var(--orange);
+  }
+  
+  img {
+    padding: 2rem;
+    background-color: var(--blue);
+  }
+  
+  .card {
+    border: 5px solid var(--orange);
+    box-shadow: 1px 2px 4px;
+    color: var(--black);
+  }
+  .card-subtitle {
+      color: var(--rust);
+  }
+  
+  .card-body {
+      background-color: #94d2bd;
+  } 

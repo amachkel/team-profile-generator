@@ -53,6 +53,6 @@ function generateTeam(data) {
   });
 }
 
-let data = [{"name":"Alex Harkins","id":1234,"email":"alex@gmail.com","title":"Manager","officeNumber":5432},{"name":"Cory Harkins","id":4532,"email":"cory@gmail.com","title":"Engineer","github":"charkins"},{"name":"Seamus Harkins","id":45432,"email":"seamus@gmail.com","title":"Intern","school":"Ga Tech"},{"name":"Nora Harkins","id":4567,"email":"nora@gmail.com","title":"Engineer","github":"nharkins"}];
+let data = [{"name":"Manager","id":1,"email":"manager@pcs.com","title":"Manager","officeNumber":12}];
 generateTeam(data);
 

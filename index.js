@@ -130,16 +130,37 @@ const addAnother = () => {
           if (err) {
             console.log(err);
           }
-          var result = data.replace(
+          const result = data.replace(
             "{employeeData}",
             JSON.stringify(employeeArr)
           );
 
-          fs.writeFile("cards-prod.js", result, "utf8", function (err) {
+          fs.writeFile("dist/cards-prod.js", result, "utf8", function (err) {
             if (err) console.log(err);
           });
         });
       }
+      fs.readFile("src/template.html", "utf-8", function (err, templateOutput) {
+        if (err) {
+          console.log(err);
+        }
+        const result = templateOutput.toString();
+    
+        return fs.writeFile("dist/TeamProfile.html", result, "utf-8", (err) =>
+          err ? console.log(err) : console.log("Team Profile was created.")
+        );
+      });
+      fs.readFile("src/template.css", "utf-8", function (err, templateOutput) {
+        if (err) {
+          console.log(err);
+        }
+        const result = templateOutput.toString();
+    
+        return fs.writeFile("dist/profile.css", result, "utf-8", (err) =>
+          err ? console.log(err) : console.log("Team Profile css was created.")
+        );
+      });
     });
 };
+
 init();
