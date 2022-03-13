@@ -4,13 +4,13 @@ const fs = require("fs");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
-// const generateTeam = require("./cards");
+
 const questions = [
   {
     type: "checkbox",
     name: "title",
     message: "What's the employee's job title?",
-    choices: ["Manager", "Engineer", "Intern"],
+    choices: ["Engineer", "Intern"],
   },
   {
     type: "input",
@@ -28,29 +28,46 @@ const questions = [
     message: "Enter employee's email address.",
   },
 ];
+// empty array to push employee objects into
 let employeeArr = [];
+
+//to initialize app
 function init() {
-  inquirer.prompt(questions).then((data) => {
-    console.log(data.title);
-    getEmployee(data);
-  });
+  getManager();
   //based on job title, start new inquirer function
 }
-getOfficeNum = (data) => {
+
+// for manager
+getManager = () => {
   inquirer
     .prompt([
+      {
+        type: "input",
+        name: "name",
+        message: "Enter manager's name.",
+      },
+      {
+        type: "number",
+        name: "id",
+        message: "Enter manager's ID",
+      },
+      {
+        type: "input",
+        name: "email",
+        message: "Enter manager's email address.",
+      },
       {
         type: "number",
         name: "officeNumber",
         message: "Manager's office number: ",
       },
     ])
-    .then((response) => {
+    .then((data) => {
       const employee = new Manager(
         data.name,
         data.id,
         data.email,
-        response.officeNumber
+        data.officeNumber
       );
       employee.validateManager();
       console.log(
@@ -61,6 +78,8 @@ getOfficeNum = (data) => {
       addAnother();
     });
 };
+
+// for engineer
 getGitHub = (data) => {
   inquirer
     .prompt([
@@ -83,6 +102,8 @@ getGitHub = (data) => {
       addAnother();
     });
 };
+
+//for intern
 getSchool = (data) => {
   inquirer
     .prompt([
@@ -103,14 +124,14 @@ getSchool = (data) => {
       addAnother();
     });
 };
-const getEmployee = (data) => {
-  data.title == "Manager"
-    ? getOfficeNum(data)
-    : data.title == "Engineer"
-    ? getGitHub(data)
-    : data.title == "Intern"
-    ? getSchool(data)
-    : console.error("error");
+const getEmployee = () => {
+  inquirer.prompt(questions).then((data) => {
+    data.title == "Engineer"
+      ? getGitHub(data)
+      : data.title == "Intern"
+      ? getSchool(data)
+      : console.error("error");
+  });
 };
 const addAnother = () => {
   inquirer
@@ -124,8 +145,9 @@ const addAnother = () => {
     ])
     .then((data) => {
       if (data.addAnother != "I am done") {
-        init();
+        getEmployee();
       } else {
+        // read card template
         fs.readFile("cards.js", "utf8", function (err, data) {
           if (err) {
             console.log(err);
@@ -134,33 +156,34 @@ const addAnother = () => {
             "{employeeData}",
             JSON.stringify(employeeArr)
           );
-
+          // create from template to include employee data
           fs.writeFile("dist/cards-prod.js", result, "utf8", function (err) {
             if (err) console.log(err);
           });
         });
       }
-      fs.readFile("src/template.html", "utf-8", function (err, templateOutput) {
-        if (err) {
-          console.log(err);
-        }
-        const result = templateOutput.toString();
-    
-        return fs.writeFile("dist/TeamProfile.html", result, "utf-8", (err) =>
-          err ? console.log(err) : console.log("Team Profile was created.")
-        );
-      });
-      fs.readFile("src/template.css", "utf-8", function (err, templateOutput) {
-        if (err) {
-          console.log(err);
-        }
-        const result = templateOutput.toString();
-    
-        return fs.writeFile("dist/profile.css", result, "utf-8", (err) =>
-          err ? console.log(err) : console.log("Team Profile css was created.")
-        );
-      });
+      // read html template
+      // fs.readFile("src/template.html", "utf-8", function (err, templateOutput) {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   const result = templateOutput.toString();
+      //   // create from html template
+      //   return fs.writeFile("dist/TeamProfile.html", result, "utf-8", (err) =>
+      //     err ? console.log(err) : console.log("Team Profile was created.")
+      //   );
+      // });
+      // fs.readFile("src/template.css", "utf-8", function (err, templateOutput) {
+      //   if (err) {
+      //     console.log(err);
+      //   }
+      //   const result = templateOutput.toString();
+
+      //   return fs.writeFile("dist/profile.css", result, "utf-8", (err) =>
+      //     err ? console.log(err) : console.log("Team Profile css was created.")
+      //   );
+      // });
     });
-};
+}
 
 init();
