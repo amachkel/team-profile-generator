@@ -148,7 +148,7 @@ const addAnother = () => {
         getEmployee();
       } else {
         // read card template
-        fs.readFile("cards.js", "utf8", function (err, data) {
+        fs.readFile("src/cards.js", "utf8", function (err, data) {
           if (err) {
             console.log(err);
           }
@@ -162,27 +162,6 @@ const addAnother = () => {
           });
         });
       }
-      // read html template
-      // fs.readFile("src/template.html", "utf-8", function (err, templateOutput) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      //   const result = templateOutput.toString();
-      //   // create from html template
-      //   return fs.writeFile("dist/TeamProfile.html", result, "utf-8", (err) =>
-      //     err ? console.log(err) : console.log("Team Profile was created.")
-      //   );
-      // });
-      // fs.readFile("src/template.css", "utf-8", function (err, templateOutput) {
-      //   if (err) {
-      //     console.log(err);
-      //   }
-      //   const result = templateOutput.toString();
-
-      //   return fs.writeFile("dist/profile.css", result, "utf-8", (err) =>
-      //     err ? console.log(err) : console.log("Team Profile css was created.")
-      //   );
-      // });
     });
 }
 

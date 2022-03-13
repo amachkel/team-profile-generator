@@ -1,73 +1,48 @@
-# team-profile-generator
+# Team Profile Generator
+[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-blueviolet.svg)](https://www.javascript.com)  [![npm-version-8.3.1](https://img.shields.io/badge/npm%20version-8.3.1-blue)](https://img.shields.io/endpoint?url=https://www.npmjs.com/package/npm/v/8.3.1)   [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![badge](https://img.shields.io/badge/tests%20passing-100%25-blue)](https://img.shields.io/badge/tests%20passing-100%25-blue) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](http://makeapullrequest.com)
 
-## User Story
+Here, I've created an application designed to allow managers to generate a webpage that displays their team's basic info so that they have quick access to their emails and GitHub profiles.
+## Table Of Contents 
+ - [description](#description)
+ - [installation](#installation)
+ - [usage](#usage)
+ - [contributors](#contributors)
+ - [license](#license)
+ - [test](#test)
 
-```md
-AS A manager
-I WANT to generate a webpage that displays my team's basic info
-SO THAT I have quick access to their emails and GitHub profiles
-```
+## Installation Requirements
+[![8.3.1](https://img.shields.io/badge/npm%20version-8.3.1-blue)](https://img.shields.io/endpoint?url=https://www.npmjs.com/package/npm/v/8.3.1)
+  
+  Enter the following command in the CLI: npm -install
 
-## Acceptance Criteria
+ ## Usage
+  Using Node.js in the command line, a manager is able to input employee's name, ID, email address, job title, and other pertinent information. The application then renders a js file to the dist folder that supplies the employee data and creates cards for each employee displaying their information. Be sure to copy over the icon folder, TeamProfile.html, profile.css, and cards-prod.js, all located in the dist folder. All files are necessary to create a well-designed, easy-to-use team profile.
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for my team members and their information
-THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-WHEN I click on an email address in the HTML
-THEN my default email program opens and populates the TO field of the email with the address
-WHEN I click on the GitHub username
-THEN that GitHub profile opens in a new tab
-WHEN I start the application
-THEN I am prompted to enter the team manager’s name, employee ID, email address, and office number
-WHEN I enter the team manager’s name, employee ID, email address, and office number
-THEN I am presented with a menu with the option to add an engineer or an intern or to finish building my team
-WHEN I select the engineer option
-THEN I am prompted to enter the engineer’s name, ID, email, and GitHub username, and I am taken back to the menu
-WHEN I select the intern option
-THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
-WHEN I decide to finish building my team
-THEN I exit the application, and the HTML is generated
-```
+## Technologies Used
 
-The first class is an `Employee` parent class with the following properties and methods:
+Front End:
+* Languages: HTML5/CSS/JS
+* jQuery
+* Bootstrap
 
-* `name`
+Back End:
+* Node.js
+* npm
+* Jest
+* Inquirer
 
-* `id`
+## Contributors
+ If you would like to contribute, please contact me at amachkel@gmail.com, or do a pull request.
 
-* `email`
+## Tests 
+[![badge](https://img.shields.io/badge/tests%20passing-100%25-blue)](https://img.shields.io/badge/tests%20passing-100%25-blue)
 
-* `getName()`
+ This project was tested with Jest and passed all tests.
 
-* `getId()`
+## License
+ This application is covererd under MIT. Click the badge to learn more. 
 
-* `getEmail()`
+ [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-* `getRole()`&mdash;returns `'Employee'`
-
-The other three classes will extend `Employee`.
-
-In addition to `Employee`'s properties and methods, `Manager` will also have the following:
-
-* `officeNumber`
-
-* `getRole()`&mdash;overridden to return `'Manager'`
-
-In addition to `Employee`'s properties and methods, `Engineer` will also have the following:
-
-* `github`&mdash;GitHub username
-
-* `getGithub()`
-
-* `getRole()`&mdash;overridden to return `'Engineer'`
-
-In addition to `Employee`'s properties and methods, `Intern` will also have the following:
-
-* `school`
-
-* `getSchool()`
-
-* `getRole()`&mdash;overridden to return `'Intern'`
-
-Finally, although it’s not a requirement, consider adding validation to ensure that user input is in the proper format.
+## Questions
+ Questions or comments? You can reach me at amachkel@gmail.com. Check out my other projects on my GitHub: https://github.com/amachkel

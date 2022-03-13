@@ -12,6 +12,11 @@ describe("Employee", () => {
       expect(employee.email).toEqual("fred@gmail.com");
       expect(employee.title).toEqual("Employee");
     });
+    test("should throw an error if provided no arguments", () => {
+      expect(() => {
+        new Employee().validateEmployee();
+      }).toThrow();
+    });
     test("should throw an error if name is not a string", () => {
       const err = new Error(
         "Expected parameter 'name' to be a non-empty string"
@@ -63,47 +68,27 @@ describe("Employee", () => {
   //positive test
   test("should return 'name' property with a string", () => {
     // Act
-    const employee = new Employee(
-      "Fred",
-      12,
-      "fred@gmail.com",
-      "Employee"
-    );
+    const employee = new Employee("Fred", 12, "fred@gmail.com", "Employee");
     // Assert
     expect(employee.getName()).toEqual("Fred");
   });
   //positive test
   test("should return 'ID' property with a number value", () => {
     // Act
-    const employee = new Employee(
-      "Fred",
-      12,
-      "fred@gmail.com",
-      "Employee"
-    );
+    const employee = new Employee("Fred", 12, "fred@gmail.com", "Employee");
     // Assert
     expect(employee.getID()).toEqual(12);
   });
   //positive test
   test("should return 'email' property with a string value", () => {
     // Act
-    const employee = new Employee(
-      "Fred",
-      12,
-      "fred@gmail.com",
-      "Employee"
-    );
+    const employee = new Employee("Fred", 12, "fred@gmail.com", "Employee");
     // Assert
     expect(employee.getEmail()).toEqual("fred@gmail.com");
   });
   test("should return 'title' property with 'Employee'", () => {
     // Act
-    const employee = new Employee(
-      "Fred",
-      12,
-      "fred@gmail.com",
-      "Employee"
-    );
+    const employee = new Employee("Fred", 12, "fred@gmail.com", "Employee");
 
     expect(employee.getTitle()).toEqual("Employee");
   });

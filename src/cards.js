@@ -28,17 +28,18 @@ renderCardBody = (data, createCard) => {
   const createPara2 = $("<p>");
   const createPara3 = $("<p>");
   createPara1.addClass("card-text");
-  createPara1.text(data.id);
+  createPara1.text(`ID: ${data.id}`);
   cardBody.append(createPara1);
   createPara2.addClass("card-text");
-  createPara2.text(data.email);
+  createPara2.html(`<a href="mailto:${data.email}">${data.email}</a>`);
   cardBody.append(createPara2);
   createPara3.addClass("card-text");
+  cardBody.append(createPara3);
 
   data.title === "Manager"
-    ? createPara3.text(`Office Number: ${data.officeNumber}`)
+    ? createPara3.text(`Office #: ${data.officeNumber}`)
     : data.title === "Engineer"
-    ? createPara3.text(`GitHub URL: ${data.github}`)
+    ? createPara3.html(`<a href="https://github.com/${data.github}">GitHub: ${data.github}</a>`)
     : data.title === "Intern"
     ? createPara3.text(`School: ${data.school}`)
     : console.error("error");
@@ -52,7 +53,7 @@ function generateTeam(data) {
     renderCard(obj);
   });
 }
-
+// array to hold user input and generate new js file
 let data = {employeeData};
 generateTeam(data);
 
