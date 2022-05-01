@@ -1,7 +1,7 @@
 # Team Profile Generator
 [![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-blueviolet.svg)](https://www.javascript.com)  [![npm-version-8.3.1](https://img.shields.io/badge/npm%20version-8.3.1-blue)](https://img.shields.io/endpoint?url=https://www.npmjs.com/package/npm/v/8.3.1)   [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  [![badge](https://img.shields.io/badge/tests%20passing-100%25-blue)](https://img.shields.io/badge/tests%20passing-100%25-blue) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](http://makeapullrequest.com)
 
-Here, I've created an application designed to allow managers to generate a webpage that displays their team's basic info so that they have quick access to their emails and GitHub profiles.
+Here, I've created a CLI application designed to allow managers to generate a webpage that displays their team's basic info so that they have quick access to their emails and GitHub profiles.
 ## Table Of Contents 
  - [description](#team-profile-generator)
  - [installation](#installation-requirements)
